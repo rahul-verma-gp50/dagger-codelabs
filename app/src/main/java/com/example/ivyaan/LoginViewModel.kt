@@ -6,4 +6,9 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) {
+    init {
+        if (userRepository == null) {
+            throw java.lang.RuntimeException("injection failed")
+        }
+    }
 }

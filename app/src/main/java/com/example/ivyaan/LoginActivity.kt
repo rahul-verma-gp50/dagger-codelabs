@@ -28,5 +28,10 @@ class LoginActivity : AppCompatActivity() {
         // now loginViewModel is available
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        // check if injection happened properly
+        if (loginViewModel == null) {
+            throw java.lang.RuntimeException("injection failed")
+        }
     }
 }

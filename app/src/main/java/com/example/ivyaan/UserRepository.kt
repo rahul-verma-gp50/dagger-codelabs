@@ -7,5 +7,9 @@ class UserRepository @Inject constructor(
     private val localDataSource: UserLocalDataSource,
     private val remoteDataSource: UserRemoteDataSource
 ) {
-
+    init {
+        if (localDataSource == null || remoteDataSource == null) {
+            throw java.lang.RuntimeException("injection failed")
+        }
+    }
 }
