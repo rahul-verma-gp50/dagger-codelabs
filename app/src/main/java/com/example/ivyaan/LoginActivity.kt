@@ -10,7 +10,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // make Dagger instantiate @Inject fields in LoginActivity
-        (applicationContext as MyApplication).appComponent.inject(this)
+        (applicationContext as MyApplication).appComponent.inject(this) // --> this is what injects above loginViewModel right now
         // now loginViewModel is available
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
