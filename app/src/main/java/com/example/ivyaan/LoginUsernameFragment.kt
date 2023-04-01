@@ -24,5 +24,9 @@ class LoginUsernameFragment : Fragment() {
 
         // Now you can access loginViewModel here and onCreateView too
         // (shared instance with the Activity and the other Fragment)
+
+        if (loginViewModel == null) {
+            throw java.lang.RuntimeException("injection failed")
+        }
     }
 }
