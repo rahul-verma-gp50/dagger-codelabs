@@ -9,6 +9,11 @@ import dagger.Subcomponent
 // we need to create new sub-graph / sub-component for login flow and a new scope
 // Now LoginActivity should get injections from LoginComponent, not ApplicationComponent (which lives throughout app lifecycle)
 // @singleton annotation can't be used here
+
+// Classes annotated with @LoginScope are scoped to the graph and the same
+// instance of that type is provided every time the type is requested.
+
+@UserScope
 @Subcomponent
 interface LoginComponent {
 
@@ -43,4 +48,6 @@ interface LoginComponent {
     // Because LoginComponent is attached to the LoginActivity lifecycle, you have to keep a reference to the component in the activity
     // in the same way you kept the reference to the applicationComponent in the Application class. That way, fragments can access it.
     fun inject(loginActivity: LoginActivity)
+    fun inject(usernameFragment: LoginUsernameFragment)
+    // fun inject(passwordFragment: LoginPasswordFragment) ... similarly for all login related fragments ...
 }
